@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class UpdatesettingRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'email' => 'required|string',
+            'phone' => 'required',
+            'facebook' => 'nullable|url',
+            'twitter' => 'nullable|url',
+            'linkedin' => 'nullable|url',
+            'instagram' => 'nullable|url',
+        ];
+    }
+
+     public function attributes(): array
+    { 
+        return [
+            'email' => __('keywords.email'),
+            'phone' => __('keywords.phone'),
+            'facebook' => __('keywords.facebook'),
+            'twitter' => __('keywords.twitter'),
+            'linkedin' => __('keywords.linkedin'),
+            'instagram' => __('keywords.instagram'),
+            
+        ];
+    }
+}
